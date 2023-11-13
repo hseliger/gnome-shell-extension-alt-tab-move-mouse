@@ -13,8 +13,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-const { Clutter, Meta } = imports.gi;
-const Main = imports.ui.main;
+// Before Gnome 45: const { Clutter, Meta } = imports.gi;
+import Clutter from 'gi://Clutter';
+import Meta from 'gi://Meta';
+// Before Gnome 45: const Main = imports.ui.main;
+import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 class Extension {
   constructor() {
