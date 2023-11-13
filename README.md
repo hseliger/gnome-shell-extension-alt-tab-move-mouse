@@ -1,5 +1,7 @@
 # GNOME Shell Extension Alt-Tab Move Mouse
 
+HSeliger (2023-11-13): Updateded for Gnome 45
+
 Move mouse pointer onto active window after Alt-Tab.
 
 
