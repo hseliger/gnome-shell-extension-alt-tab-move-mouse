@@ -19,8 +19,13 @@ import Meta from 'gi://Meta';
 // Before Gnome 45: const Main = imports.ui.main;
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
-class Extension {
+export default class AltTabExtension  {
   constructor() {
+    this._handler = null;
+  }
+ 
+  /* exported enable */
+  enable() {
     this.origMethods = {
       "Main.activateWindow": Main.activateWindow
     };
@@ -33,6 +38,11 @@ class Extension {
       Clutter.InputDeviceType.POINTER_DEVICE
     );
   }
+
+  /* exported disable */
+  disable() {
+    this._seat = null;
+}
 
   destroy() {
     Main.activateWindow = this.origMethods["Main.activateWindow"];
@@ -53,17 +63,4 @@ class Extension {
     const rect = new Meta.Rectangle({ x, y, width: 1, height: 1 });
     return rect.intersect(window.get_frame_rect())[0];
   }
-}
-
-let extension = null;
-
-/* exported enable */
-function enable() {
-  extension = new Extension();
-}
-
-/* exported disable */
-function disable() {
-  extension.destroy();
-  extension = null;
 }
